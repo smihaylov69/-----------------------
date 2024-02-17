@@ -37,6 +37,18 @@ int comparedesc(const void * const p1, const void * const p2){
 
 }
 
+void bubblesort(int arr[], int arrlen, int (*compare)(void *, void *), void (*swapelements)(void *, void *)){
+    for (int i = 0; i < arrlen - 1; i++){
+        for (int j = 0; j < arrlen - i - 1; j++){
+            void *p1 = &arr[j];
+            void *p2 = &arr[j+1];
+            if(compare(p1, p2) == 1){
+                swapelements(p1, p2);
+            }
+        }
+    }
+}
+
 
 void main(){
     int a = 7;
@@ -62,5 +74,23 @@ void main(){
 
     printf("The result from compareasc is: %d\n", answer1);
     printf("The result from comparedesc is: %d\n", answer2);
+
+    int arr[5] = {1, 7, 2, 3, 4};
+    
+    bubblesort(arr, 5, compareasc, swap);
+    
+    printf("The sorted array by compareasc method:\n");
+    for (int i = 0; i < 5; i++){
+        printf("Element %d: %d\n", i+1, arr[i]);
+    }
+
+    bubblesort(arr, 5, comparedesc, swap);
+    
+    printf("The sorted array by compareadesc method:\n");
+    for (int i = 0; i < 5; i++){
+        printf("Element %d: %d\n", i+1, arr[i]);
+    }
+
+
 
 }
