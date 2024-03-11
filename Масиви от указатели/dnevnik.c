@@ -17,7 +17,7 @@ int main(){
     sub_name = (char **)malloc(sizeof(char *) * sub_count);
 
     if(sub_name == NULL){
-        printf("Error allocating memory");
+        printf("Error with  allocating memory");
         exit(1);
     }
 
